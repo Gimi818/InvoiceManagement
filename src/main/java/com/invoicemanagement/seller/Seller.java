@@ -1,4 +1,4 @@
-package com.invoicemanagement.client;
+package com.invoicemanagement.seller;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "client")
+@Table(name = "seller")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Client {
+public class Seller {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

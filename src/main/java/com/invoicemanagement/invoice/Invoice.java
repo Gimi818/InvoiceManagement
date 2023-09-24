@@ -1,6 +1,7 @@
 package com.invoicemanagement.invoice;
 
-import com.invoicemanagement.client.Client;
+import com.invoicemanagement.buyer.Buyer;
+import com.invoicemanagement.seller.Seller;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,9 +24,12 @@ public class Invoice {
     private Long id;
     private String invoiceNumber;
     @ManyToOne
-    private Client client;
-    // @ManyToOne
-    //private Supplier supplier;
+    private Seller seller;
+    @OneToOne
+    private Buyer buyer;
     private LocalDate issueDate;
+    private LocalDate saleDate;
+    private double basicAmount;
+    private int tax;
     private BigDecimal totalAmount;
 }
