@@ -1,6 +1,7 @@
 package com.invoicemanagement.invoice;
 
 import com.invoicemanagement.invoice.dto.InvoiceRequestDto;
+import com.invoicemanagement.invoice.dto.InvoiceResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,12 @@ public class InvoiceService {
         Invoice invoice = repository.save(invoiceMapper.dtoToEntity(invoiceRequestDto));
         log.info("Saved invoice {}", invoice);
         return invoice;
+    }
+    public InvoiceResponseDto findInvoiceById(Long id) {
+        log.info("Finding invoice with ID {}", id);
+        Invoice invoice = repository.findById(id).orElseThrow();
+        log.info("Found invoice {}", invoice);
+        return invoiceMapper.entityToDto(invoice);
     }
 
 }

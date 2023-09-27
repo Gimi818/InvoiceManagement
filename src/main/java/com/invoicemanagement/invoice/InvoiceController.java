@@ -1,13 +1,11 @@
 package com.invoicemanagement.invoice;
 
 import com.invoicemanagement.invoice.dto.InvoiceRequestDto;
+import com.invoicemanagement.invoice.dto.InvoiceResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,4 +19,9 @@ public class InvoiceController {
         return new ResponseEntity<>(service.saveInvoice(invoiceRequestDto), HttpStatus.CREATED);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<InvoiceResponseDto> findInvoiceById(@PathVariable Long id) {
+        InvoiceResponseDto invoiceResponseDto = service.findInvoiceById(id);
+        return ResponseEntity.status(HttpStatus.OK).body(invoiceResponseDto);
+    }
 }
