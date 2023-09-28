@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 @Log4j2
@@ -25,6 +28,13 @@ public class InvoiceService {
         Invoice invoice = repository.findById(id).orElseThrow();
         log.info("Found invoice {}", invoice);
         return invoiceMapper.entityToDto(invoice);
+    }
+
+    public List<InvoiceResponseDto> findAllInvoice() {
+        log.info("Finding all invoice...");
+        return repository.findAll().stream()
+                .map(invoiceMapper::entityToDto)
+                .collect(Collectors.toList());
     }
 
 }
