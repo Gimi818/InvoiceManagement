@@ -1,7 +1,10 @@
 package com.invoicemanagement.seller;
 
 
+import com.invoicemanagement.invoice.Invoice;
+import com.invoicemanagement.invoice.dto.InvoiceResponseDto;
 import com.invoicemanagement.seller.dto.SellerRequestDto;
+import com.invoicemanagement.seller.dto.SellerResponseDto;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -24,6 +27,9 @@ public class SellerService {
 
 
 
-
+    public SellerResponseDto findSellerById(Long id) {
+        Seller seller = repository.findById(id).orElseThrow();
+        return mapper.entityToDto(seller);
+    }
 
 }
