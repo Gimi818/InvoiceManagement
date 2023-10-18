@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class BuyerService {
     private final BuyerRepository repository;
+    private final BuyerMapper mapper;
 
     public BuyerResponseDto findBuyerById(Long id) {
         Buyer buyer = repository.findById(id).orElseThrow();

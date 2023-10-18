@@ -1,8 +1,6 @@
 package com.invoicemanagement.seller;
 
-import com.invoicemanagement.invoice.Invoice;
-import com.invoicemanagement.invoice.dto.InvoiceRequestDto;
-import com.invoicemanagement.invoice.dto.InvoiceResponseDto;
+
 import com.invoicemanagement.seller.dto.SellerRequestDto;
 import com.invoicemanagement.seller.dto.SellerResponseDto;
 import org.mapstruct.Mapper;
